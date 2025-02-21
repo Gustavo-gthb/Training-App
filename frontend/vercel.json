@@ -6,14 +6,6 @@
         "config": {
           "distDir": "dist"
         }
-      }
-    ],
-    "redirects": [
-        {
-          "source": "/(.*)",
-          "destination": "/index.html",
-          "permanent": false
-        }
-      ]
-    
+      } 
+    ]
   }
