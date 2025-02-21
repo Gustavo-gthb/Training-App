@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "./style";
 import Border from "../../../components/Border";
 import Input from "../../../components/Rectangle";

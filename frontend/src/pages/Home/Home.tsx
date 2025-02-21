@@ -1,4 +1,3 @@
-import React from 'react'
 import Train from './Train/Train';
 
 const Home = () => {
