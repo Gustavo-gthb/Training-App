@@ -10,6 +10,7 @@ export const ContainerButton = styled.button`
   color: #fff;
   border-radius: 100px;
 
-  transform: translateY(80px);
-
+  transform: translateY(190px);
+  width: 149px;
+  height: 35px;
 `;

@@ -1,9 +1,10 @@
-import "./App.css";
+// import "./App.css";
+import RouterController from './routes';
 
 function App() {
   return (
     <>
-    
+      <RouterController/>
     </>
   );  
 }

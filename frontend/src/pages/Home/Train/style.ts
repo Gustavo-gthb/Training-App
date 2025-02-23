@@ -6,8 +6,8 @@ export const Container = styled.div `
     align-items: center;
     justify-content: center;
 
-    .Button {
-        transform: translateY(-100px);
+    h2 {
+        transform: translateY(90px);
     }
     
     

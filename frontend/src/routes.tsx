@@ -4,6 +4,8 @@ import Home from "./pages/Home/Home";
 const RouterController = () => {
   return (
     <Routes>
+     
+
       <Route path="/" element={<Home />} />
       {/* <Route path="/Exercise" element={<Exercise />} />
       <Route path="/Series" element={<Series />} /> */}
@@ -11,5 +13,4 @@ const RouterController = () => {
   );
 };
 
-export default RouterController;    
-    
+export default RouterController;

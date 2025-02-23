@@ -1,11 +1,14 @@
-import Train from './Train/Train';
+import Train from "./Train/Train";
+import { ContainerHome } from './style';
 
 const Home = () => {
   return (
     <>
-      <Train/>
+      <ContainerHome>
+        <Train />
+      </ContainerHome> 
     </>
-  )
-}
+  );
+};
 
 export default Home;

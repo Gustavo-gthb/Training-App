@@ -1,7 +1,11 @@
 import { Container } from "./style";
 
-const Input = () => {
-  return <Container></Container>;
+type RectangleProps = {
+  children: string;
 };
 
-export default Input;
+const Rectangle: React.FC<RectangleProps> = ({ children }) => {
+  return <Container>{children} </Container>;
+};
+
+export default Rectangle;
