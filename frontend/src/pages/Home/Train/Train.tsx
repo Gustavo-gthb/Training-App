@@ -5,12 +5,10 @@ import Rectangle from "../../../components/Rectangle/Rectangle";
 import { useState } from "react";
 import Modal from "./Modal";
 import { useNavigate } from "react-router";
-import useCreateTraining from "../../../context/CreateTraining/useCreateTraining";
 import useAddTraining from "../../../context/AddTraining/useAddTraining";
 
 const Train = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { inputValueTraining } = useCreateTraining();
   const { trainings, removeTraining } = useAddTraining();
 
   const navigate = useNavigate();
