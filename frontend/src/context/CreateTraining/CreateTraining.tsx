@@ -5,6 +5,8 @@ type CreateTrainingType = {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
+
+
 const CreateTrainingContext = createContext<CreateTrainingType | undefined>(
   undefined
 );
