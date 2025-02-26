@@ -5,9 +5,11 @@ import Rectangle from "../../../components/Rectangle/Rectangle";
 import { useState } from "react";
 import Modal from "../../../components/Modal";
 import { useNavigate } from "react-router";
+import useCreateTraining from "../../../context/CreateTraining/useCreateTraining";
 
 const Train = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {inputValue} = useCreateTraining()
   
   const navigate = useNavigate();
 
@@ -25,7 +27,7 @@ const Train = () => {
       <h2>Treino</h2>
 
       <Border>
-        <Rectangle  onClick={handleClick}>texto</Rectangle>
+        <Rectangle  onClick={handleClick}>{inputValue}</Rectangle>
       </Border>
       <Button onClick={() => setIsModalOpen(true)}>Criar Treino</Button>
     </Container>

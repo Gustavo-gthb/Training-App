@@ -3,7 +3,7 @@ import { ContainerButton } from "./style";
 
 
 type ButtonProps = {
-  children: string;
+  children: React.ReactNode;
   onClick: () => void; 
 };
 
