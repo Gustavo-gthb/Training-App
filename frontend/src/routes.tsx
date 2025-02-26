@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router";
-import Home from "./pages/Home/Home";
 import Exercise from "./pages/Home/Exercise";
+import Train from "./pages/Home/Train/Train";
 
 const RouterController = () => {
   return (
     <Routes>
      
 
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Train />} />
       <Route path="/exercise" element={<Exercise />} />
       {/* <Route path="/Series" element={<Series />} /> */}
     </Routes>
