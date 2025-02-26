@@ -1,3 +1,4 @@
+import Exercise from "./Exercise";
 import Train from "./Train/Train";
 import { ContainerHome } from './style';
 
@@ -6,6 +7,7 @@ const Home = () => {
     <>
       <ContainerHome>
         <Train />
+        <Exercise/>
       </ContainerHome> 
     </>
   );
