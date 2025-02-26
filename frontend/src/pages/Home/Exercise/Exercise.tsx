@@ -3,21 +3,27 @@ import Button from "../../../components/Button";
 import Rectangle from "../../../components/Rectangle/Rectangle";
 import { useState } from "react";
 import { Container } from "./style";
-import Modal from "../../../components/Modal";
+import Modal from "./Modal";
+import useCreateExercise from "../../../context/CreateExercise/useCreateExercise";
 
 const Exercise = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {inputValueExercise} = useCreateExercise()
 
   console.log(isModalOpen);
 
   return (
     <Container>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} text="aaaa" />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        text="Digite o grupamento muscular:"
+      />
 
       <h2>Exercicios de peito</h2>
 
       <Border>
-        <Rectangle>texto</Rectangle>
+        <Rectangle>{inputValueExercise}</Rectangle>
       </Border>
       <Button onClick={() => setIsModalOpen(true)}>Adicionar Exercicio</Button>
     </Container>
