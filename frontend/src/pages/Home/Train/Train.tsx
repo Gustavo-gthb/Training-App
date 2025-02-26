@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container, RemoveButton } from "./style";
 import Border from "../../../components/Border";
 import Button from "../../../components/Button";
 import Rectangle from "../../../components/Rectangle/Rectangle";
@@ -6,10 +6,12 @@ import { useState } from "react";
 import Modal from "./Modal";
 import { useNavigate } from "react-router";
 import useCreateTraining from "../../../context/CreateTraining/useCreateTraining";
+import useAddTraining from "../../../context/AddTraining/useAddTraining";
 
 const Train = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { inputValueTraining } = useCreateTraining();
+  const { trainings, removeTraining } = useAddTraining();
 
   const navigate = useNavigate();
 
@@ -30,7 +32,15 @@ const Train = () => {
       <h2>Treino</h2>
 
       <Border>
-        <Rectangle onClick={handleClick}>{inputValueTraining}</Rectangle>
+        {trainings.map((training, index) => (
+          <>
+            <Rectangle onClick={handleClick} key={index}>
+              {training}
+            </Rectangle>
+
+            <RemoveButton onClick={() => removeTraining(index)}>aaaaaa</RemoveButton>
+          </>
+        ))}
       </Border>
       <Button onClick={() => setIsModalOpen(true)}>Criar Treino</Button>
     </Container>

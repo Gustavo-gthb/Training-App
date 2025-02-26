@@ -10,5 +10,10 @@ export const Container = styled.div `
         transform: translateY(90px);
     }
     
+`
+
+export const RemoveButton = styled.button `
+
     
+
 `

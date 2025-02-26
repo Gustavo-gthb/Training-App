@@ -3,6 +3,7 @@ import React from "react";
 import { CloseButton, ModalContainer, ModalContent, Overlay } from "./style";
 import Input from "../../../../components/Input";
 import useCreateTraining from "../../../../context/CreateTraining/useCreateTraining";
+import useAddTraining from "../../../../context/AddTraining/useAddTraining";
 
 type ModalProps = {
   isOpen: boolean;
@@ -12,6 +13,14 @@ type ModalProps = {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
   const { inputValueTraining, handleChange } = useCreateTraining();
+  const { addTraining } = useAddTraining();
+
+  const handleAddTraining = () => {
+    if (inputValueTraining.trim()) {
+      addTraining(inputValueTraining);
+    }
+  };
+
   return (
     <Overlay isOpen={isOpen} onClick={onClose}>
       <ModalContainer>
@@ -19,7 +28,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
           <p>{text}</p>
           <Input value={inputValueTraining} onChange={handleChange}></Input>
         </ModalContent>
-        <CloseButton onClick={onClose}>Fechar</CloseButton>
+        <CloseButton
+          onClick={() => {
+            handleAddTraining();
+            onClose();
+          }}
+        >
+          Fechar
+        </CloseButton>
       </ModalContainer>
     </Overlay>
   );
