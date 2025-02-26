@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import Home from "./pages/Home/Home";
+import Exercise from "./pages/Home/Exercise";
 
 const RouterController = () => {
   return (
@@ -7,8 +8,8 @@ const RouterController = () => {
      
 
       <Route path="/" element={<Home />} />
-      {/* <Route path="/Exercise" element={<Exercise />} />
-      <Route path="/Series" element={<Series />} /> */}
+      <Route path="/exercise" element={<Exercise />} />
+      {/* <Route path="/Series" element={<Series />} /> */}
     </Routes>
   );
 };

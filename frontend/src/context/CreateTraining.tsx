@@ -1,15 +1,15 @@
 
-type training = {
-  id: number;
-  name: string;
-};
+// type training = {
+//   id: number;
+//   name: string;
+// };
 
-type CreateTrainingType = {};
+// type CreateTrainingType = {};
 
-export const CreateTrainingContext = createContext;
+// export const CreateTrainingContext = createContext;
 
-const CreateTraining = () => {
-  return <div>CreateTraining</div>;
-};
+// const CreateTraining = () => {
+//   return <div>CreateTraining</div>;
+// };
 
-export default CreateTraining;
+// export default CreateTraining;
