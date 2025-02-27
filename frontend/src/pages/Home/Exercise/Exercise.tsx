@@ -5,10 +5,17 @@ import { useState } from "react";
 import { Container } from "./style";
 import Modal from "./Modal";
 import useCreateExercise from "../../../context/CreateExercise/useCreateExercise";
+import { useNavigate } from "react-router";
 
 const Exercise = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {inputValueExercise} = useCreateExercise()
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/series")
+  }
+
 
   console.log(isModalOpen);
 
@@ -19,11 +26,11 @@ const Exercise = () => {
         onClose={() => setIsModalOpen(false)}
         text="Digite o grupamento muscular:"
       />
-
+ 
       <h2>Exercicios de peito</h2>
 
       <Border>
-        <Rectangle>{inputValueExercise}</Rectangle>
+        <Rectangle onClick={handleClick} >{inputValueExercise}</Rectangle>
       </Border>
       <Button onClick={() => setIsModalOpen(true)}>Adicionar Exercicio</Button>
     </Container>
