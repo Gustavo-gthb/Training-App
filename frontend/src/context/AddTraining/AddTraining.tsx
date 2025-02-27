@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 type TrainingContextType = {
   trainings: string[];
- 
+
   addTraining: (newTraining: string) => void;
   removeTraining: (index: number) => void;
 };
@@ -30,12 +30,11 @@ export const AddTrainingProvider = ({
     setTrainings((prev) => [...prev, newTraining]);
   };
 
-    const removeTraining = (index: number) => {
+  const removeTraining = (index: number) => {
     setTrainings((prev) => prev.filter((_, i) => i !== index));
   };
 
-  console.log(trainings)
-
+  console.log(trainings);
 
   return (
     <AddTrainingContext.Provider

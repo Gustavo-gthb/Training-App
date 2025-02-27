@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   Container,
   InputSeries,
@@ -8,27 +7,10 @@ import {
 } from "./style";
 import Border from "../../../components/Border";
 import Button from "../../../components/Button";
+import useAddSeries from "../../../context/AddSeries/useAddSeries";
 
 const Series = () => {
-  const [series, setSeries] = useState<string[]>(() => {
-    const storedSeries = localStorage.getItem("series");
-
-    return storedSeries ? JSON.parse(storedSeries) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("series", JSON.stringify(series));
-  }, [series]);
-
-  const addSeries = (newSeries: string) => {
-    setSeries((prev) => [...prev, newSeries]);
-  };
-
-  const removeSeries = (index: number) => {
-    setSeries((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  console.log(series);
+  const {series, removeSeries, addSeries} = useAddSeries()
 
   return (
     <Container>
