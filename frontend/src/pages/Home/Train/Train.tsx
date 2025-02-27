@@ -17,7 +17,7 @@ const Train = () => {
     navigate("/exercise");
   };
 
-  console.log(isModalOpen);
+  console.log(isModalOpen); 
 
   return (
     <Container>
