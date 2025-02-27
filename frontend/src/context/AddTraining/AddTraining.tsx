@@ -30,7 +30,7 @@ export const AddTrainingProvider = ({
     setTrainings((prev) => [...prev, newTraining]);
   };
 
-  const removeTraining = (index: number) => {
+    const removeTraining = (index: number) => {
     setTrainings((prev) => prev.filter((_, i) => i !== index));
   };
 

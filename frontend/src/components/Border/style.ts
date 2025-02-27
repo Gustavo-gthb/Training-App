@@ -11,6 +11,8 @@ export const Container = styled.div`
 
   width: 292px;
   height: 322px;
+  max-height: 322px;
+  overflow-y: auto;
 
   gap: 20px;
 
