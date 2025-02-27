@@ -35,7 +35,7 @@ const Series = () => {
       <h2>Séries de crucifixo</h2>
 
       <Border>
-        {series.map((serie, index) => (
+        {series.map((_, index) => (
           <SeriesContainer key={index}>
             <RepsContainer>
               <p>Repetições:</p>
@@ -45,10 +45,10 @@ const Series = () => {
               <p>Peso:</p>
               <InputSeries />
             </WeightContainer>
+            <Button onClick={() => removeSeries(index)}>remover</Button>
           </SeriesContainer>
         ))} 
       </Border>
-        <Button onClick={() => removeSeries(index)}>remover</Button>
 
       <Button onClick={() => addSeries("Nova série")}>adicionar série</Button>
     </Container>
