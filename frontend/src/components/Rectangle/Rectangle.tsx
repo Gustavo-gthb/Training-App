@@ -1,7 +1,7 @@
 import { Container } from "./style";
 
 type RectangleProps = {
-  children: string;
+  children: React.ReactNode;
   onClick?: () => void;
 };
 

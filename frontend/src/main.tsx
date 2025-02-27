@@ -8,20 +8,23 @@ import { CreateExerciseProvider } from "./context/CreateExercise/CreateExercise"
 import { AddTrainingProvider } from "./context/AddTraining/AddTraining";
 import { AddSeriesProvider } from "./context/AddSeries/AddSeries";
 import { SavedInputValueProvider } from "./context/SavedInputValue/SavedInputValue";
+import { CreateSeriesProvider } from "./context/CreateSeries/CreateSerie";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <CreateTrainingProvider>
       <CreateExerciseProvider>
-        <AddTrainingProvider>
-          <AddSeriesProvider>
-            <SavedInputValueProvider>
-              <BrowserRouter>
-                <RouterController />
-              </BrowserRouter>
-            </SavedInputValueProvider>
-          </AddSeriesProvider>
-        </AddTrainingProvider>
+        <CreateSeriesProvider>
+          <AddTrainingProvider>
+            <AddSeriesProvider>
+              <SavedInputValueProvider>
+                <BrowserRouter>
+                  <RouterController />
+                </BrowserRouter>
+              </SavedInputValueProvider>
+            </AddSeriesProvider>
+          </AddTrainingProvider>
+        </CreateSeriesProvider>
       </CreateExerciseProvider>
     </CreateTrainingProvider>
   </StrictMode>

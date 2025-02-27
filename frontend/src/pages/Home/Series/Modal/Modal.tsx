@@ -2,8 +2,8 @@ import React from "react";
 
 import { CloseButton, ModalContainer, ModalContent, Overlay } from "./style";
 import Input from "../../../../components/Input";
-import useCreateTraining from "../../../../context/CreateTraining/useCreateTraining";
-import useAddTraining from "../../../../context/AddTraining/useAddTraining";
+import useCreateSerie from "../../../../context/CreateSeries/useCreateSerie";
+import useAddSeries from "../../../../context/AddSeries/useAddSeries";
 
 type ModalProps = {
   isOpen: boolean;
@@ -12,12 +12,12 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
-  const { inputValueTraining, handleChange } = useCreateTraining();
-  const { addTraining } = useAddTraining();
+  const { inputValueSeries, handleChange } = useCreateSerie();
+  const { addSeries } = useAddSeries();
 
-  const handleAddTraining = () => {
-    if (inputValueTraining.trim()) {
-      addTraining(inputValueTraining);
+  const handleAddSerie = () => {
+    if (inputValueSeries.trim()) {
+      addSeries(inputValueSeries); 
     }
   };
 
@@ -26,11 +26,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
       <ModalContainer>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <p>{text}</p>
-          <Input value={inputValueTraining} onChange={handleChange}></Input>
+          <Input value={inputValueSeries} onChange={handleChange}></Input>
         </ModalContent>
         <CloseButton
           onClick={() => {
-            handleAddTraining();
+            handleAddSerie();
             onClose();
           }}
         >

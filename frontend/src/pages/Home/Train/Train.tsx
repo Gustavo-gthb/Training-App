@@ -38,11 +38,11 @@ const Train = () => {
 
             <RemoveButton onClick={() => removeTraining(index)}>aaaaaa</RemoveButton>
           </>
-        ))}
+        ))} 
       </Border>
       <Button onClick={() => setIsModalOpen(true)}>Criar Treino</Button>
     </Container>
   );
-};
+}; 
 
 export default Train;
