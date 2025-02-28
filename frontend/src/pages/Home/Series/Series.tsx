@@ -6,8 +6,10 @@ import { useState } from "react";
 import Modal from "./Modal";
 import Rectangle from "../../../components/Rectangle";
 import { RemoveButton } from "../Train/style";
+import { useParams } from "react-router";
 
 const Series = () => {
+  const {exerciseName} = useParams();
   const [isModoalOpen, setIsModalOpen] = useState(false);
   const { data, removeSeries} = useAddSeries();
 
@@ -20,7 +22,7 @@ const Series = () => {
         text2="Digite o peso:"
         />
 
-      <h2>Séries de crucifixo</h2> 
+      <h2>Séries de {exerciseName}</h2>  
 
       <Border>
         {data.reps.map((reps, index) => (
@@ -28,7 +30,7 @@ const Series = () => {
             <Rectangle key={index}> reps:{reps} , peso:{data.weight[index]} Kg</Rectangle>
             <RemoveButton onClick={() => removeSeries(index)}>aaaa</RemoveButton>
           </> 
-        ))}
+        ))} 
       </Border>
 
       <Button onClick={() => setIsModalOpen(true)}>adicionar série</Button>

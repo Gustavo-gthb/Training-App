@@ -8,7 +8,7 @@ const RouterController = () => {
     <Routes>
       <Route path="/" element={<Train />} />
       <Route path="/exercise/:trainingName" element={<Exercise />} />
-      <Route path="/Series" element={<Series />} />
+      <Route path="/series/:exerciseName" element={<Series />} />
     </Routes>
   );
 };

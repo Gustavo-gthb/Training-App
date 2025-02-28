@@ -15,7 +15,7 @@ const AddTrainingContext = createContext<TrainingContextType | undefined>(
   undefined
 ); 
 
-export const AddTrainingProvider = ({
+export const AddTrainingProvider = ({ 
   children,
 }: {
   children: React.ReactNode; 

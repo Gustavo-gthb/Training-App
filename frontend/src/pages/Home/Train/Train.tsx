@@ -20,7 +20,7 @@ const Train = () => {
   console.log(isModalOpen); 
 
   return (
-    <Container>
+    <Container> 
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -34,7 +34,7 @@ const Train = () => {
           <>
             <Rectangle onClick={() => navigate(`/exercise/${training.name}`)} key={training.id}>
               {training.name}
-            </Rectangle>
+            </Rectangle>  
 
             <RemoveButton onClick={() => removeTraining(training.id)}>aaaaaa</RemoveButton>
           </>

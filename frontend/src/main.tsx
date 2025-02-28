@@ -9,6 +9,7 @@ import { AddTrainingProvider } from "./context/AddTraining/AddTraining";
 import { AddSeriesProvider } from "./context/AddSeries/AddSeries";
 import { SavedInputValueProvider } from "./context/SavedInputValue/SavedInputValue";
 import { CreateSeriesProvider } from "./context/CreateSeries/CreateSerie";
+import { AddExerciseProvider } from "./context/AddExercise/addExercise";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -16,13 +17,15 @@ createRoot(document.getElementById("root")!).render(
       <CreateExerciseProvider>
         <CreateSeriesProvider>
           <AddTrainingProvider>
-            <AddSeriesProvider>
-              <SavedInputValueProvider>
-                <BrowserRouter>
-                  <RouterController />
-                </BrowserRouter>
-              </SavedInputValueProvider>
-            </AddSeriesProvider>
+            <AddExerciseProvider>
+              <AddSeriesProvider>
+                <SavedInputValueProvider>
+                  <BrowserRouter>
+                    <RouterController />
+                  </BrowserRouter>
+                </SavedInputValueProvider>
+              </AddSeriesProvider>
+            </AddExerciseProvider>
           </AddTrainingProvider>
         </CreateSeriesProvider>
       </CreateExerciseProvider>

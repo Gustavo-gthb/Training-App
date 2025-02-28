@@ -19,7 +19,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
     if (inputValueTraining.trim()) {
       addTraining(inputValueTraining);
     }
-  };
+  }; 
 
   return (
     <Overlay isOpen={isOpen} onClick={onClose}>
