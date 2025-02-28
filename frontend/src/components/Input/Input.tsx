@@ -2,7 +2,7 @@ import React from "react";
 import { InputContainer } from "./style";
 
 type InputProps = {
-  value: string;
+  value: number | string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 };

@@ -1,36 +1,48 @@
 import React, { createContext, useState, useEffect } from "react";
 
 interface SeriesContextType {
-  series: string[];
-  addSeries: (newSeries: string) => void;
+  data: { reps: string[]; weight: number[] };
+  addSeries: (newreps: string, newWeight: number) => void;
   removeSeries: (index: number) => void;
 }
 
- const AddSeriesContext = createContext<SeriesContextType | undefined>(
+const AddSeriesContext = createContext<SeriesContextType | undefined>(
   undefined
 );
 
-export const AddSeriesProvider = ({ children }: { children: React.ReactNode }) => {
-  const [series, setSeries] = useState<string[]>(() => {
-    const storedSeries = localStorage.getItem("series");
+export const AddSeriesProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [data, setData] = useState<{ reps: string[]; weight: number[] }>(() => {
+    const storedData = localStorage.getItem("seriesData");
 
-    return storedSeries ? JSON.parse(storedSeries) : [];
+    return storedData ? JSON.parse(storedData) : { reps: [], weight: [] };
   });
 
   useEffect(() => {
-    localStorage.setItem("series", JSON.stringify(series));
-  }, [series]);
+    localStorage.setItem("seriesData", JSON.stringify(data));
+  }, [data]);
 
-  const addSeries = (newSeries: string) => {
-    setSeries((prev) => [...prev, newSeries]);
+  const addSeries = (newReps: string, newWeight: number) => {
+    setData((prev) => ({
+      ...prev,
+      reps: [...prev.reps, newReps],
+      weight: [...prev.weight, newWeight],
+    }));
   };
 
   const removeSeries = (index: number) => {
-    setSeries((prev) => prev.filter((_, i) => i !== index));
+    setData((prev) => ({
+      ...prev,
+      reps: prev.reps.filter((_, i) => i !== index),
+      weight: prev.weight.filter((_, i) => i !== index),
+    }));
   };
 
   return (
-    <AddSeriesContext.Provider value={{ series, addSeries, removeSeries }}>
+    <AddSeriesContext.Provider value={{ data, addSeries, removeSeries }}>
       {children}
     </AddSeriesContext.Provider>
   );

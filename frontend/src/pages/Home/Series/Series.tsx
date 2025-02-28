@@ -9,22 +9,23 @@ import { RemoveButton } from "../Train/style";
 
 const Series = () => {
   const [isModoalOpen, setIsModalOpen] = useState(false);
-  const { series, removeSeries, addSeries } = useAddSeries();
+  const { data, removeSeries} = useAddSeries();
 
   return (
     <Container>
       <Modal
         isOpen={isModoalOpen}
         onClose={() => setIsModalOpen(false)}
-        text="Digite o número de repetições:"
-      />
+        text1="Digite o número de repetições:"
+        text2="Digite o peso:"
+        />
 
-      <h2>Séries de crucifixo</h2>
+      <h2>Séries de crucifixo</h2> 
 
       <Border>
-        {series.map((series, index) => (
+        {data.reps.map((reps, index) => (
           <>
-            <Rectangle key={index}> {series}</Rectangle>
+            <Rectangle key={index}> reps:{reps} , peso:{data.weight[index]} Kg</Rectangle>
             <RemoveButton onClick={() => removeSeries(index)}>aaaa</RemoveButton>
           </> 
         ))}

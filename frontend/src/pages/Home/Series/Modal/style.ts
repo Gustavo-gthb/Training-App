@@ -13,9 +13,7 @@ const fadeIn = keyframes`
     backdrop-filter: blur(12px);
   }
 
-`
-
- 
+`;
 
 export const Overlay = styled.div<{ isOpen: boolean }>`
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
@@ -24,41 +22,37 @@ export const Overlay = styled.div<{ isOpen: boolean }>`
   left: 0;
   width: 100vw;
   height: 100vh;
-  backdrop-filter: ${({isOpen}) => (isOpen ? "blur(12px)" : "blur(0px)" )};
-  opacity: ${({isOpen}) => (isOpen ? 1 : 0 )};
+  backdrop-filter: ${({ isOpen }) => (isOpen ? "blur(12px)" : "blur(0px)")};
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   transition: opacity 1s ease-in-out;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   z-index: 1000;
 `;
 
-export const ModalContainer = styled.div `
+export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 1001;
   animation: ${fadeIn} 1s ease-in-out;
-  
-
-
-`
+`;
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #FFFFFF;
-  border: 1px solid #F9E0E0;
+  background-color: #ffffff;
+  border: 1px solid #f9e0e0;
   width: 292px;
   height: 322px;
   z-index: 1001;
 
   p {
-    transform: translateY(-30px);
+    /* transform: translateY(-10px); */
   }
-
 `;
 
 export const CloseButton = styled.button`

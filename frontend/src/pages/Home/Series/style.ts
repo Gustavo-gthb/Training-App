@@ -47,7 +47,7 @@ export const RepsContainer = styled.div`
 export const WeightContainer = styled.div`
      display: flex;
      flex-direction: row;
-     justify-content: center;
+     justify-content: center; 
      align-items: center;
      
 
