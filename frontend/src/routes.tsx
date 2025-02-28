@@ -7,7 +7,7 @@ const RouterController = () => {
   return (
     <Routes>
       <Route path="/" element={<Train />} />
-      <Route path="/exercise" element={<Exercise />} />
+      <Route path="/exercise/:trainingName" element={<Exercise />} />
       <Route path="/Series" element={<Series />} />
     </Routes>
   );

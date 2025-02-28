@@ -19,7 +19,7 @@ export const AddSeriesProvider = ({
     const storedData = localStorage.getItem("seriesData");
 
     return storedData ? JSON.parse(storedData) : { reps: [], weight: [] };
-  });
+  }); 
 
   useEffect(() => {
     localStorage.setItem("seriesData", JSON.stringify(data));
@@ -40,6 +40,8 @@ export const AddSeriesProvider = ({
       weight: prev.weight.filter((_, i) => i !== index),
     }));
   };
+
+  console.log(data);
 
   return (
     <AddSeriesContext.Provider value={{ data, addSeries, removeSeries }}>

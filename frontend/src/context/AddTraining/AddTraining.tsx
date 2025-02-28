@@ -1,22 +1,26 @@
 import { createContext, useEffect, useState } from "react";
 
-type TrainingContextType = {
-  trainings: string[];
+type Training = {
+  id: number;
+  name: string;
+}
 
+type TrainingContextType = {
+  trainings: Training[];
   addTraining: (newTraining: string) => void;
   removeTraining: (index: number) => void;
 };
 
 const AddTrainingContext = createContext<TrainingContextType | undefined>(
   undefined
-);
+); 
 
 export const AddTrainingProvider = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode; 
 }) => {
-  const [trainings, setTrainings] = useState<string[]>(() => {
+  const [trainings, setTrainings] = useState<Training[]>(() => {
     const storedTrainings = localStorage.getItem("trainings");
 
     return storedTrainings ? JSON.parse(storedTrainings) : [];
@@ -27,11 +31,14 @@ export const AddTrainingProvider = ({
   }, [trainings]);
 
   const addTraining = (newTraining: string) => {
-    setTrainings((prev) => [...prev, newTraining]);
+    setTrainings((prev) => [
+      ...prev,
+      { id: prev.length + 1, name: newTraining },
+    ]);
   };
 
-  const removeTraining = (index: number) => {
-    setTrainings((prev) => prev.filter((_, i) => i !== index));
+  const removeTraining = (id: number) => {
+    setTrainings((prev) => prev.filter((training) => training.id !== id));
   };
 
   console.log(trainings);

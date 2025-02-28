@@ -5,9 +5,10 @@ import { useState } from "react";
 import { Container } from "./style";
 import Modal from "./Modal";
 import useCreateExercise from "../../../context/CreateExercise/useCreateExercise";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const Exercise = () => {
+  const {trainingName} = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {inputValueExercise} = useCreateExercise()
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Exercise = () => {
         text="Digite o grupamento muscular:"
       />
  
-      <h2>Exercicios de peito</h2>
+      <h2>Exercicios de {trainingName}</h2>
 
       <Border>
         <Rectangle onClick={handleClick} >{inputValueExercise}</Rectangle>
