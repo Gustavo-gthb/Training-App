@@ -1,9 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 
 interface SeriesContextType {
-  data: { reps: string[]; weight: number[] };
-  addSeries: (newreps: string, newWeight: number) => void;
-  removeSeries: (index: number) => void;
+  data: {
+    [exercise: string]: { reps: string[]; weight: number[] };
+  };
+  addSeries: (exercise: string, newreps: string, newWeight: number) => void;
+  removeSeries: (exercise: string, index: number) => void;
 }
 
 const AddSeriesContext = createContext<SeriesContextType | undefined>(
@@ -15,29 +17,35 @@ export const AddSeriesProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [data, setData] = useState<{ reps: string[]; weight: number[] }>(() => {
+  const [data, setData] = useState<{
+    [exercise: string]: { reps: string[]; weight: number[] };
+  }>(() => {
     const storedData = localStorage.getItem("seriesData");
 
-    return storedData ? JSON.parse(storedData) : { reps: [], weight: [] };
-  }); 
+    return storedData ? JSON.parse(storedData) : {};
+  });
 
   useEffect(() => {
     localStorage.setItem("seriesData", JSON.stringify(data));
   }, [data]);
 
-  const addSeries = (newReps: string, newWeight: number) => {
+  const addSeries = (exercise: string, newReps: string, newWeight: number) => {
     setData((prev) => ({
       ...prev,
-      reps: [...prev.reps, newReps],
-      weight: [...prev.weight, newWeight],
+      [exercise]: {
+        reps: [...(prev[exercise]?.reps || []), newReps],
+        weight: [...(prev[exercise]?.weight || []), newWeight],
+      },
     }));
   };
 
-  const removeSeries = (index: number) => {
+  const removeSeries = (exercise: string, index: number) => {
     setData((prev) => ({
       ...prev,
-      reps: prev.reps.filter((_, i) => i !== index),
-      weight: prev.weight.filter((_, i) => i !== index),
+      [exercise]: {
+        reps: prev[exercise]?.reps.filter((_, i) => i !== index) || [],
+        weight: prev[exercise]?.weight.filter((_, i) => i !== index) || [],
+      },
     }));
   };
 

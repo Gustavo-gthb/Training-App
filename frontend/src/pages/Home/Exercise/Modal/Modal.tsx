@@ -9,33 +9,39 @@ type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   text: string;
-}; 
+  trainingName: string | undefined;
+};
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  text,
+  trainingName,
+}) => {
   const { inputValueExercise, handleChange } = useCreateExercise();
-  const {addExercise} = useAddExercise();
+  const { addExercise } = useAddExercise();
 
   const handleAddExercise = () => {
-    if (inputValueExercise.trim()) {
-      addExercise(inputValueExercise);
-    }
+    if (!trainingName || !inputValueExercise.trim()) return;
+    addExercise(trainingName, inputValueExercise);
+    onClose();
   };
-  
+
   return (
     <Overlay isOpen={isOpen} onClick={onClose}>
       <ModalContainer>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <p>{text}</p>
-          <Input value={inputValueExercise} onChange={handleChange}></Input>
+          <Input
+            type="text"
+            value={inputValueExercise}
+            onChange={handleChange}
+          ></Input>
         </ModalContent>
-        <CloseButton onClick={() => {
-          handleAddExercise();
-          onClose();
-        }}>Fechar</CloseButton>
+        <CloseButton onClick={handleAddExercise}>Fechar</CloseButton>
       </ModalContainer>
     </Overlay>
   );
 };
 
 export default Modal;
-

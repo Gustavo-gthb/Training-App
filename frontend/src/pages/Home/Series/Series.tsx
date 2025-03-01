@@ -9,9 +9,11 @@ import { RemoveButton } from "../Train/style";
 import { useParams } from "react-router";
 
 const Series = () => {
-  const {exerciseName} = useParams();
+  const { exerciseName } = useParams();
   const [isModoalOpen, setIsModalOpen] = useState(false);
-  const { data, removeSeries} = useAddSeries();
+  const { data, removeSeries } = useAddSeries();
+
+  const series = data[exerciseName ?? ""] || { reps: [], weight: [] };
 
   return (
     <Container>
@@ -20,21 +22,27 @@ const Series = () => {
         onClose={() => setIsModalOpen(false)}
         text1="Digite o número de repetições:"
         text2="Digite o peso:"
-        />
+        exerciseName={exerciseName ?? ""}
+      />
 
-      <h2>Séries de {exerciseName}</h2>  
+      <h2>Séries de {exerciseName}</h2>
 
       <Border>
-        {data.reps.map((reps, index) => (
+        {series.reps.map((reps, index) => (
           <>
-            <Rectangle key={index}> reps:{reps} , peso:{data.weight[index]} Kg</Rectangle>
-            <RemoveButton onClick={() => removeSeries(index)}>aaaa</RemoveButton>
-          </> 
-        ))} 
+            <Rectangle key={index}>
+              {" "}
+              reps:{reps} , peso:{series.weight[index]} Kg
+            </Rectangle>
+            <RemoveButton onClick={() => removeSeries(exerciseName ?? "", index)}>
+              aaaa
+            </RemoveButton>
+          </>
+        ))}
       </Border>
 
       <Button onClick={() => setIsModalOpen(true)}>adicionar série</Button>
-    </Container> 
+    </Container>
   );
 };
 

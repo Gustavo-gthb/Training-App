@@ -9,28 +9,41 @@ type ModalProps = {
   onClose: () => void;
   text1: string;
   text2: string;
+  exerciseName: string;
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text1, text2 }) => {
-  const {addSeries } = useAddSeries();
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text1, text2, exerciseName }) => {
+  const { addSeries } = useAddSeries();
   const [newReps, setNewReps] = useState("");
   const [newWeight, setNewWeight] = useState<number>(0);
+
+  const handleAddSeries = () => {
+    if (!exerciseName) return;
+    addSeries(exerciseName, newReps, newWeight);
+    setNewReps("");
+    setNewWeight(0);
+    onClose();
+  }
 
   return (
     <Overlay isOpen={isOpen} onClick={onClose}>
       <ModalContainer>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <p>{text1}</p>
-          <Input type="number" value={newReps} onChange={(e) => setNewReps(e.target.value)}></Input>
+          <Input
+            type="number"
+            value={newReps}
+            onChange={(e) => setNewReps(e.target.value)}
+          ></Input>
 
           <p>{text2}</p>
-          <Input type="number" value={newWeight} onChange={(e) => setNewWeight(Number(e.target.value))}/>
+          <Input
+            type="number"
+            value={newWeight}
+            onChange={(e) => setNewWeight(Number(e.target.value))}
+          />
         </ModalContent>
-        <CloseButton
-          onClick={() => 
-            addSeries(newReps, newWeight)
-          }
-        >
+        <CloseButton onClick={handleAddSeries}>
           Fechar
         </CloseButton>
       </ModalContainer>
