@@ -2,14 +2,19 @@ import { Container, DeleteButton } from "./style";
 
 type RectangleProps = {
   children: React.ReactNode;
-  onClick?: () => void;
+  handleClickNext: () => void;
+  handleClickDelet: () => void;
 };
 
-const Rectangle: React.FC<RectangleProps> = ({ children, onClick }) => {
+const Rectangle: React.FC<RectangleProps> = ({
+  children,
+  handleClickNext,
+  handleClickDelet,
+}) => {
   return (
     <Container>
-      <p onClick={onClick}>{children}</p>
-      <DeleteButton onClick={onClick}>X</DeleteButton>
+        <p onClick={handleClickNext}>{children}</p>
+        <DeleteButton onClick={handleClickDelet}>X</DeleteButton>
     </Container>
   );
 };

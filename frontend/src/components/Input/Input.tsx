@@ -12,7 +12,7 @@ const Input: React.FC<InputProps> = ({
   type,
   value,
   onChange,
-  placeholder,
+  placeholder, 
 }) => {
   return (
     <InputContainer

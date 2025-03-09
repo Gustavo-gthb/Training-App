@@ -5,7 +5,7 @@ export const InputContainer = styled.input `
     align-items: center;
     justify-content: center;
 
-    width: 90%;
+    width: 210px;
     height: 46px;
     background-color: #293038;
     color: #9dabb8;
@@ -13,7 +13,9 @@ export const InputContainer = styled.input `
     border: 2px solid #000000;
     border-radius: 8px;
     outline: none;
-    padding: 0 16px;
+    padding: 0 16px; 
+
+    transform: translateY(-22px);
 
     font-size: 16px; 
 

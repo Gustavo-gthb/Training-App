@@ -9,7 +9,7 @@ export const Container = styled.div`
   border: none;
 
   border: 1px solid #000000;
-  background-color: #DDA14D;
+  background-color: #dda14d;
   border-radius: 8px;
   color: #000000;
 
@@ -18,10 +18,9 @@ export const Container = styled.div`
 
   margin-top: 20px;
 
-    p {
-        padding-left: 15px;
-    }
-
+  p {
+    padding-left: 15px;
+  }
 `;
 
 export const DeleteButton = styled.button`
@@ -30,8 +29,4 @@ export const DeleteButton = styled.button`
   justify-content: center;
 
   margin-right: 15px;
-
-
-`
-
-
+`;

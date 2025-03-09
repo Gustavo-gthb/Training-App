@@ -1,4 +1,4 @@
-import { Container, DeleteButton } from "./style";
+import { Container } from "./style";
 import Rectangle from "../../../components/Rectangle/Rectangle";
 import { useState } from "react";
 import Modal from "./Modal";
@@ -27,24 +27,25 @@ const Train = () => {
         text="Digite o título do seu treino:"
       />
 
-      <h2>Treinos</h2>
+      <h2>Treino</h2>
 
       <Border>
         {trainings.map((training) => (
           <>
             <Rectangle
-              onClick={() => navigate(`/exercise/${training.name}`)}
+              // onClick={() => navigate(`/exercise/${training.name}`)}
+              handleClickNext={() => navigate(`/exercise/${training.name}`)}
+              handleClickDelet={() => removeTraining(training.id)}
               key={training.id}
             >
               {training.name}
-            {/* <DeleteButton onClick={() => removeTraining(training.id)}>aaaa</DeleteButton> */}
-            </Rectangle> 
-
+              {/* <DeleteButton onClick={() => removeTraining(training.id)}>aaaa</DeleteButton> */}
+            </Rectangle>
           </>
         ))}
       </Border>
-      <Button onClick={() => setIsModalOpen(true)}>adicionar</Button>
-    </Container> 
+      <Button onClick={() => setIsModalOpen(true)}>Criar Treino</Button>
+    </Container>
   );
 };
 

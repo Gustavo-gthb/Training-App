@@ -1,6 +1,12 @@
 import React from "react";
 
-import { CloseButton, ModalContainer, ModalContent, Overlay } from "./style";
+import {
+  AddButton,
+  DoneButton,
+  ModalContainer,
+  ModalContent,
+  Overlay,
+} from "./style";
 import Input from "../../../../components/Input";
 import useCreateTraining from "../../../../context/CreateTraining/useCreateTraining";
 import useAddTraining from "../../../../context/AddTraining/useAddTraining";
@@ -18,26 +24,21 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
   const handleAddTraining = () => {
     if (inputValueTraining.trim()) {
       addTraining(inputValueTraining);
+      
     }
-  }; 
+  };
 
   return (
     <Overlay isOpen={isOpen} onClick={onClose}>
-      <ModalContainer>
-        <ModalContent onClick={(e) => e.stopPropagation()}>
+      <ModalContainer onClick={(e) => e.stopPropagation()}>
+        <ModalContent>
           <p>{text}</p>
-          <Input value={inputValueTraining} onChange={handleChange}></Input>
+          <Input value={inputValueTraining} onChange={handleChange} />
         </ModalContent>
-        <CloseButton
-          onClick={() => {
-            handleAddTraining();
-            onClose();
-          }}
-        >
-          Fechar
-        </CloseButton>
-      </ModalContainer> 
-    </Overlay>
+        <AddButton onClick={handleAddTraining}>adicionar</AddButton>
+        <DoneButton onClick={onClose}>concluido</DoneButton>
+      </ModalContainer>
+    </Overlay> 
   );
 };
 
