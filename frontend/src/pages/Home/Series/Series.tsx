@@ -28,15 +28,15 @@ const Series = () => {
       
         {series.reps.map((reps, index) => (
           <>
-            <Rectangle key={index}>
+            <Rectangle handleClickDelet={() => removeSeries(exerciseName ?? "", index)} key={index}>
               {" "}
               reps:{reps} , peso:{series.weight[index]} Kg
             </Rectangle>
-            <Button
+            {/* <Button
               onClick={() => removeSeries(exerciseName ?? "", index)}
             >
               aaaa
-            </Button>
+            </Button> */}
           </>
         ))}
 

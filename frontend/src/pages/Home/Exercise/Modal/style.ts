@@ -9,9 +9,9 @@ const fadeIn = keyframes`
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(20);
     backdrop-filter: blur(12px);
-  }
+  } 
 
 `;
 
@@ -37,30 +37,59 @@ export const ModalContainer = styled.div`
   justify-content: center;
   z-index: 1001;
   animation: ${fadeIn} 1s ease-in-out;
+
+  transform: translateY(50px);
 `;
+
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
-  border: 1px solid #f9e0e0;
+  background-color: #322F2F;
+  color: #C8C8C8;
+  border: 1px solid #000000;
   width: 292px;
   height: 322px;
+  border-radius: 8px;
   z-index: 1001;
 
   p {
-    transform: translateY(-30px);
+    transform: translateY(-70px);
   }
 `;
 
-export const CloseButton = styled.button`
-  margin-top: 10px;
-  padding: 5px 10px;
-  border: none;
-  background: crimson;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+export const AddButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-style: none;
+  color: #c8c8c8;
+  border-radius: 100px;
+  background-color: #0325d0;
+
+  width: 149px;
+  height: 35px;
+  z-index: 1001;
+
+  transform: translateY(30px);
+`;
+
+export const DoneButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-style: none;
+  color: #c8c8c8;
+  border-radius: 100px;
+  background-color: #0325d0;
+
+  width: 149px;
+  height: 35px;
+  z-index: 1001;
+
+  transform: translateY(50px);
 `;

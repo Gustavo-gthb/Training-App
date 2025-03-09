@@ -1,6 +1,12 @@
 import React from "react";
 
-import { CloseButton, ModalContainer, ModalContent, Overlay } from "./style";
+import {
+  AddButton,
+  DoneButton,
+  ModalContainer,
+  ModalContent,
+  Overlay,
+} from "./style";
 import Input from "../../../../components/Input";
 import useCreateExercise from "../../../../context/CreateExercise/useCreateExercise";
 import useAddExercise from "../../../../context/AddExercise/useAddExercise";
@@ -18,27 +24,25 @@ const Modal: React.FC<ModalProps> = ({
   text,
   trainingName,
 }) => {
-  const { inputValueExercise, handleChange } = useCreateExercise();
+  const { inputValueExercise, handleChange, clearInput } = useCreateExercise();
   const { addExercise } = useAddExercise();
 
   const handleAddExercise = () => {
     if (!trainingName || !inputValueExercise.trim()) return;
     addExercise(trainingName, inputValueExercise);
-    onClose();
+    clearInput()
+    
   };
 
   return (
     <Overlay isOpen={isOpen} onClick={onClose}>
-      <ModalContainer>
-        <ModalContent onClick={(e) => e.stopPropagation()}>
+      <ModalContainer onClick={(e) => e.stopPropagation()}>
+        <ModalContent>
           <p>{text}</p>
-          <Input
-            type="text"
-            value={inputValueExercise}
-            onChange={handleChange}
-          ></Input>
+          <Input value={inputValueExercise} onChange={handleChange} />
         </ModalContent>
-        <CloseButton onClick={handleAddExercise}>Fechar</CloseButton>
+        <AddButton onClick={handleAddExercise}>adicionar</AddButton>
+        <DoneButton onClick={onClose}>concluido</DoneButton>
       </ModalContainer>
     </Overlay>
   );

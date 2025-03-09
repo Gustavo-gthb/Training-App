@@ -8,5 +8,6 @@ export const Container = styled.div`
 
   h2 {
     transform: translateY(90px);
-  }
+    color: #c8c8c8;
+  } 
 `;

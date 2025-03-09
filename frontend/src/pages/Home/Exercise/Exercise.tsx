@@ -5,6 +5,7 @@ import { Container } from "./style";
 import Modal from "./Modal";
 import { useNavigate, useParams } from "react-router";
 import useAddExercise from "../../../context/AddExercise/useAddExercise";
+import Border from "../../../components/Border";
 
 const Exercise = () => {
   const { trainingName } = useParams();
@@ -25,22 +26,27 @@ const Exercise = () => {
 
       <h2>Exercicios de {trainingName}</h2>
 
+      <Border>
         {currentExercises.map((exercise) => (
           <>
             <Rectangle
-              onClick={() => navigate(`/series/${exercise.name}`)}
+              handleClickNext={() => navigate(`/series/${exercise.name}`)}
+              handleClickDelet={() =>
+                removeExercise(trainingName ?? "", exercise.id)
+              }
               key={exercise.id}
             >
               {exercise.name}
             </Rectangle>
 
-            <Button
+            {/* <Button
               onClick={() => removeExercise(trainingName ?? "", exercise.id)}
-            >
+              >
               aaaa
-            </Button>
+              </Button> */}
           </>
         ))}
+      </Border>
       <Button onClick={() => setIsModalOpen(true)}>Adicionar Exercicio</Button>
     </Container>
   );

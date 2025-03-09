@@ -11,11 +11,3 @@ export const Container = styled.div`
     color: #c8c8c8;
   }
 `;
-
-export const DeleteButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 10px;
-`;

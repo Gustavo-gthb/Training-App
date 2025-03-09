@@ -2,7 +2,7 @@ import { Container, DeleteButton } from "./style";
 
 type RectangleProps = {
   children: React.ReactNode;
-  handleClickNext: () => void;
+  handleClickNext?: () => void;
   handleClickDelet: () => void;
 };
 
