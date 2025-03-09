@@ -3,6 +3,7 @@ import { ChangeEvent, createContext, useState } from "react";
 type CreateTrainingType = {
   inputValueTraining: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  setInputValueTraining: (value: string) => void;
 };
 
 
@@ -24,7 +25,7 @@ export const CreateTrainingProvider = ({
 
   return (
     <CreateTrainingContext.Provider
-      value={{ inputValueTraining, handleChange }}
+      value={{ inputValueTraining, handleChange, setInputValueTraining }}
     >
       {children}
     </CreateTrainingContext.Provider>

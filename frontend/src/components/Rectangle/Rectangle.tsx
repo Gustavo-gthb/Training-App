@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container, DeleteButton } from "./style";
 
 type RectangleProps = {
   children: React.ReactNode;
@@ -6,7 +6,12 @@ type RectangleProps = {
 };
 
 const Rectangle: React.FC<RectangleProps> = ({ children, onClick }) => {
-  return <Container onClick={onClick}>{children} </Container>;
+  return (
+    <Container>
+      <p onClick={onClick}>{children}</p>
+      <DeleteButton onClick={onClick}>X</DeleteButton>
+    </Container>
+  );
 };
 
 export default Rectangle;

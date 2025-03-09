@@ -11,4 +11,4 @@ const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
   return <ContainerButton onClick={onClick}>{children}</ContainerButton>;
 };
 
-export default Button; 
+export default Button;  

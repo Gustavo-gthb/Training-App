@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
         >
           Fechar
         </CloseButton>
-      </ModalContainer>
+      </ModalContainer> 
     </Overlay>
   );
 };

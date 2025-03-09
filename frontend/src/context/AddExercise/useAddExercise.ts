@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import AddExerciseContext from "./addExercise";
+import AddExerciseContext from "./AddExercise";
+
 
 const useAddExercise = () => {
   const context = useContext(AddExerciseContext);

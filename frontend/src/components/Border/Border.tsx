@@ -6,7 +6,7 @@ type BorderProps = {
 };
 
 const Border: React.FC<BorderProps> = ({ children }) => {
-  return <Container> {children} </Container>;
+  return <Container>{children}</Container>;
 };
 
-export default Border; 
+export default Border;  

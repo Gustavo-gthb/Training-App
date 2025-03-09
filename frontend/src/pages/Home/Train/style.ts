@@ -1,19 +1,21 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const Container = styled.div `
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    h2 {
-        transform: translateY(90px);
-    }
-    
-`
+  h2 {
+    transform: translateY(60px);
+    color: #c8c8c8;
+  }
+`;
 
-export const RemoveButton = styled.button `
+export const DeleteButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    
-
-`
+  padding: 10px;
+`;

@@ -1,11 +1,9 @@
 import { Container } from "./style";
-import Border from "../../../components/Border";
 import Button from "../../../components/Button";
 import useAddSeries from "../../../context/AddSeries/useAddSeries";
 import { useState } from "react";
 import Modal from "./Modal";
 import Rectangle from "../../../components/Rectangle";
-import { RemoveButton } from "../Train/style";
 import { useParams } from "react-router";
 
 const Series = () => {
@@ -27,19 +25,20 @@ const Series = () => {
 
       <h2>Séries de {exerciseName}</h2>
 
-      <Border>
+      
         {series.reps.map((reps, index) => (
           <>
             <Rectangle key={index}>
               {" "}
               reps:{reps} , peso:{series.weight[index]} Kg
             </Rectangle>
-            <RemoveButton onClick={() => removeSeries(exerciseName ?? "", index)}>
+            <Button
+              onClick={() => removeSeries(exerciseName ?? "", index)}
+            >
               aaaa
-            </RemoveButton>
+            </Button>
           </>
         ))}
-      </Border>
 
       <Button onClick={() => setIsModalOpen(true)}>adicionar série</Button>
     </Container>

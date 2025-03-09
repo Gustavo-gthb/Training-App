@@ -6,38 +6,39 @@ type SavedInputValueType = {
   removeValue: (index: number) => void;
 };
 
-const SavedInputValueContext = createContext<SavedInputValueType | undefined>(undefined);
+const SavedInputValueContext = createContext<SavedInputValueType | undefined>(
+  undefined
+);
 
-export const SavedInputValueProvider = ({children} : {children: React.ReactNode}) => {
-    const [values, setValues] = useState<string[]>(() => {
-        const storedValues = localStorage.getItem("values");
-        return storedValues ? JSON.parse(storedValues) : [];
+export const SavedInputValueProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [values, setValues] = useState<string[]>(() => {
+    const storedValues = localStorage.getItem("values");
+    return storedValues ? JSON.parse(storedValues) : [];
+  });
 
-})
+  console.log(values);
 
-console.log(values);
-
-useEffect (() => {
+  useEffect(() => {
     localStorage.setItem("values", JSON.stringify(values));
-}, [values]);
+  }, [values]);
 
-const addValue = (newValue: string) => {
+  const addValue = (newValue: string) => {
     setValues((prev) => [...prev, newValue]);
-}
+  };
 
-const removeValue = (index: number) => {
+  const removeValue = (index: number) => {
     setValues((prev) => prev.filter((_, i) => i !== index));
+  };
 
-}
-
-return (
-    <SavedInputValueContext.Provider value={{values, addValue, removeValue}}>
-        {children}
+  return (
+    <SavedInputValueContext.Provider value={{ values, addValue, removeValue }}>
+      {children}
     </SavedInputValueContext.Provider>
-)
-
-}
+  );
+};
 
 export default SavedInputValueContext;
-
-

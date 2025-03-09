@@ -7,9 +7,9 @@ import { CreateTrainingProvider } from "./context/CreateTraining/CreateTraining"
 import { CreateExerciseProvider } from "./context/CreateExercise/CreateExercise";
 import { AddTrainingProvider } from "./context/AddTraining/AddTraining";
 import { AddSeriesProvider } from "./context/AddSeries/AddSeries";
-import { SavedInputValueProvider } from "./context/SavedInputValue/SavedInputValue";
 import { CreateSeriesProvider } from "./context/CreateSeries/CreateSerie";
-import { AddExerciseProvider } from "./context/AddExercise/addExercise";
+import { AddExerciseProvider } from "./context/AddExercise/AddExercise";
+import { SavedInputValueProvider } from "./context/SavedInputValue/SavedInputValue";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

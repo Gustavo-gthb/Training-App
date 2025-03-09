@@ -11,7 +11,7 @@ const fadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
     backdrop-filter: blur(12px);
-  }
+  } 
 
 `
 

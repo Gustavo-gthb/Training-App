@@ -3,6 +3,7 @@ import { ChangeEvent, createContext, useState } from "react";
 type CreateExerciseType = {
   inputValueExercise: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  setInputValueExercise: (value: string) => void;
 };
 
 const CreateExerciseContext = createContext<CreateExerciseType | undefined>(
@@ -22,7 +23,7 @@ export const CreateExerciseProvider = ({
 
   return (
     <CreateExerciseContext.Provider
-      value={{ inputValueExercise, handleChange }}
+      value={{ inputValueExercise, handleChange, setInputValueExercise }}
     >
       {children}
     </CreateExerciseContext.Provider>

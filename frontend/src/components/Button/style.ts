@@ -6,12 +6,11 @@ export const ContainerButton = styled.button`
   align-items: center;
 
   border-style: none;
-  background-color: #65558f;
-  color: #fff;
+  color: #c8c8c8;
   border-radius: 100px;
+  background-color: #0325d0;
 
   transform: translateY(190px);
   width: 149px;
   height: 35px;
-
 `;
