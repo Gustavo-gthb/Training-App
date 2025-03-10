@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-import { CloseButton, ModalContainer, ModalContent, Overlay } from "./style";
+import {
+  AddButton,
+  DoneButton,
+  ModalContainer,
+  ModalContent,
+  Overlay,
+} from "./style";
 import Input from "../../../../components/Input";
 import useAddSeries from "../../../../context/AddSeries/useAddSeries";
 
@@ -12,23 +18,28 @@ type ModalProps = {
   exerciseName: string;
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text1, text2, exerciseName }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  text1,
+  text2,
+  exerciseName,
+}) => {
   const { addSeries } = useAddSeries();
   const [newReps, setNewReps] = useState("");
-  const [newWeight, setNewWeight] = useState<number>(0);
+  const [newWeight, setNewWeight] = useState("");
 
   const handleAddSeries = () => {
     if (!exerciseName) return;
     addSeries(exerciseName, newReps, newWeight);
     setNewReps("");
-    setNewWeight(0);
-    onClose();
-  }
+    setNewWeight("");
+  };
 
   return (
     <Overlay isOpen={isOpen} onClick={onClose}>
-      <ModalContainer>
-        <ModalContent onClick={(e) => e.stopPropagation()}>
+      <ModalContainer onClick={(e) => e.stopPropagation()}>
+        <ModalContent >
           <p>{text1}</p>
           <Input
             type="number"
@@ -40,12 +51,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text1, text2, exerciseNa
           <Input
             type="number"
             value={newWeight}
-            onChange={(e) => setNewWeight(Number(e.target.value))}
+            onChange={(e) => setNewWeight(e.target.value)}
           />
         </ModalContent>
-        <CloseButton onClick={handleAddSeries}>
-          Fechar
-        </CloseButton>
+        <AddButton onClick={handleAddSeries}>adicionar</AddButton>
+        <DoneButton onClick={onClose}>concluido</DoneButton>
       </ModalContainer>
     </Overlay>
   );

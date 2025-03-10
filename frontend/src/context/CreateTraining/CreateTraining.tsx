@@ -4,9 +4,8 @@ type CreateTrainingType = {
   inputValueTraining: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   setInputValueTraining: (value: string) => void;
+  clearInput: () => void;
 };
-
-
 
 const CreateTrainingContext = createContext<CreateTrainingType | undefined>(
   undefined
@@ -23,9 +22,18 @@ export const CreateTrainingProvider = ({
     setInputValueTraining(e.target.value);
   };
 
+  const clearInput = () => {
+    setInputValueTraining("");
+  };
+
   return (
     <CreateTrainingContext.Provider
-      value={{ inputValueTraining, handleChange, setInputValueTraining }}
+      value={{
+        inputValueTraining,
+        handleChange,
+        setInputValueTraining,
+        clearInput,
+      }}
     >
       {children}
     </CreateTrainingContext.Provider>

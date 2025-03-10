@@ -2,9 +2,9 @@ import React, { createContext, useState, useEffect } from "react";
 
 interface SeriesContextType {
   data: {
-    [exercise: string]: { reps: string[]; weight: number[] };
+    [exercise: string]: { reps: string[]; weight: string[] };
   };
-  addSeries: (exercise: string, newreps: string, newWeight: number) => void;
+  addSeries: (exercise: string, newreps: string, newWeight: string) => void;
   removeSeries: (exercise: string, index: number) => void;
 }
 
@@ -18,7 +18,7 @@ export const AddSeriesProvider = ({
   children: React.ReactNode;
 }) => {
   const [data, setData] = useState<{
-    [exercise: string]: { reps: string[]; weight: number[] };
+    [exercise: string]: { reps: string[]; weight: string[] };
   }>(() => {
     const storedData = localStorage.getItem("seriesData");
 
@@ -29,7 +29,7 @@ export const AddSeriesProvider = ({
     localStorage.setItem("seriesData", JSON.stringify(data));
   }, [data]);
 
-  const addSeries = (exercise: string, newReps: string, newWeight: number) => {
+  const addSeries = (exercise: string, newReps: string, newWeight: string) => {
     setData((prev) => ({
       ...prev,
       [exercise]: {

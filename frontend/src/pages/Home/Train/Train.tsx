@@ -13,10 +13,6 @@ const Train = () => {
 
   const navigate = useNavigate();
 
-  // const handleClick = () => {
-  //   navigate(`/exercise/${trainings}`);
-  // };
-
   console.log(isModalOpen);
 
   return (
@@ -33,13 +29,11 @@ const Train = () => {
         {trainings.map((training) => (
           <>
             <Rectangle
-              // onClick={() => navigate(`/exercise/${training.name}`)}
               handleClickNext={() => navigate(`/exercise/${training.name}`)}
               handleClickDelet={() => removeTraining(training.id)}
               key={training.id}
             >
               {training.name}
-              {/* <DeleteButton onClick={() => removeTraining(training.id)}>aaaa</DeleteButton> */}
             </Rectangle>
           </>
         ))}

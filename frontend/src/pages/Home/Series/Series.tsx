@@ -1,10 +1,16 @@
-import { Container } from "./style";
+import {
+  Container,
+  InputSeries,
+  RepsContainer,
+  SeriesContainer,
+  WeightContainer,
+} from "./style";
 import Button from "../../../components/Button";
 import useAddSeries from "../../../context/AddSeries/useAddSeries";
 import { useState } from "react";
 import Modal from "./Modal";
-import Rectangle from "../../../components/Rectangle";
 import { useParams } from "react-router";
+import Border from "../../../components/Border";
 
 const Series = () => {
   const { exerciseName } = useParams();
@@ -25,20 +31,23 @@ const Series = () => {
 
       <h2>Séries de {exerciseName}</h2>
 
-      
+      <Border>
         {series.reps.map((reps, index) => (
           <>
-            <Rectangle handleClickDelet={() => removeSeries(exerciseName ?? "", index)} key={index}>
-              {" "}
-              reps:{reps} , peso:{series.weight[index]} Kg
-            </Rectangle>
-            {/* <Button
-              onClick={() => removeSeries(exerciseName ?? "", index)}
-            >
+            <SeriesContainer key={index}>
+              <RepsContainer>
+                Repetições: <InputSeries>{reps}</InputSeries>
+              </RepsContainer>
+              <WeightContainer>
+                Peso: <InputSeries>{series.weight[index]}</InputSeries>
+              </WeightContainer>
+            </SeriesContainer>
+            <Button onClick={() => removeSeries(exerciseName ?? "", index)}>
               aaaa
-            </Button> */}
+            </Button>
           </>
         ))}
+      </Border>
 
       <Button onClick={() => setIsModalOpen(true)}>adicionar série</Button>
     </Container>

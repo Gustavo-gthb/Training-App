@@ -3,6 +3,7 @@ import { ChangeEvent, createContext, useState } from "react";
 type CreateSeriesType = {
   inputValueSeries: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  clearInput: () => void;
 };
 
 const CreateSeriesContext = createContext<CreateSeriesType | undefined>(
@@ -20,8 +21,14 @@ export const CreateSeriesProvider = ({
     setInputValueSeries(e.target.value);
   };
 
+  const clearInput = () => {
+    setInputValueSeries("");
+  };
+
   return (
-    <CreateSeriesContext.Provider value={{ inputValueSeries, handleChange }}>
+    <CreateSeriesContext.Provider
+      value={{ inputValueSeries, handleChange, clearInput }}
+    >
       {children}
     </CreateSeriesContext.Provider>
   );
