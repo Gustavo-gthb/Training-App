@@ -4,7 +4,7 @@ const fadeIn = keyframes`
   from {
     opacity: 0;
     transform: translateY(-20px);
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px); 
   }
 
   to {
@@ -41,14 +41,13 @@ export const ModalContainer = styled.div`
   transform: translateY(50px);
 `;
 
-
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #322F2F;
-  color: #C8C8C8;
+  background-color: #322f2f;
+  color: #c8c8c8;
   border: 1px solid #000000;
   width: 292px;
   height: 322px;

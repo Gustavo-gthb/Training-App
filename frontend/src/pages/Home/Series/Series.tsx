@@ -1,11 +1,13 @@
 import {
+  AddSerie,
   Container,
+  DeleteButton,
+  DeleteContainer,
   InputSeries,
   RepsContainer,
   SeriesContainer,
   WeightContainer,
 } from "./style";
-import Button from "../../../components/Button";
 import useAddSeries from "../../../context/AddSeries/useAddSeries";
 import { useState } from "react";
 import Modal from "./Modal";
@@ -16,8 +18,12 @@ const Series = () => {
   const { exerciseName } = useParams();
   const [isModoalOpen, setIsModalOpen] = useState(false);
   const { data, removeSeries } = useAddSeries();
-
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const series = data[exerciseName ?? ""] || { reps: [], weight: [] };
+
+  const handleSelected = (index: number) => {
+    setSelectedIndex((prev) => (prev === index ? null : index));
+  };
 
   return (
     <Container>
@@ -35,21 +41,30 @@ const Series = () => {
         {series.reps.map((reps, index) => (
           <>
             <SeriesContainer key={index}>
-              <RepsContainer>
-                Repetições: <InputSeries>{reps}</InputSeries>
-              </RepsContainer>
-              <WeightContainer>
-                Peso: <InputSeries>{series.weight[index]}</InputSeries>
-              </WeightContainer>
+              <DeleteContainer
+                isSelected={selectedIndex === index}
+                onClick={() => handleSelected(index)}
+              >
+                <RepsContainer>
+                  Repetições: <InputSeries>{reps}</InputSeries>
+                </RepsContainer>
+                <WeightContainer>
+                  Peso: <InputSeries>{series.weight[index]}</InputSeries>
+                </WeightContainer>
+              </DeleteContainer>
             </SeriesContainer>
-            <Button onClick={() => removeSeries(exerciseName ?? "", index)}>
-              aaaa
-            </Button>
           </>
         ))}
       </Border>
 
-      <Button onClick={() => setIsModalOpen(true)}>adicionar série</Button>
+      <DeleteButton
+        isSelected={selectedIndex !== null}
+        onClick={() => removeSeries(exerciseName ?? "", selectedIndex!)}
+      >
+        Delete série
+      </DeleteButton>
+
+      <AddSerie onClick={() => setIsModalOpen(true)}>adicionar série</AddSerie>
     </Container>
   );
 };

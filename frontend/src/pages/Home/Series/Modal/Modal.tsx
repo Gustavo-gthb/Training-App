@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   text1,
   text2,
-  exerciseName,
+  exerciseName, 
 }) => {
   const { addSeries } = useAddSeries();
   const [newReps, setNewReps] = useState("");
