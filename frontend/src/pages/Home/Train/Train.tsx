@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import useAddTraining from "../../../context/AddTraining/useAddTraining";
 import Border from "../../../components/Border/Border";
 import Button from "../../../components/Button";
+import { AnimatePresence } from "framer-motion";
 
 const Train = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +14,7 @@ const Train = () => {
 
   const navigate = useNavigate();
 
-  console.log(isModalOpen);
+  console.log(trainings);
 
   return (
     <Container>
@@ -26,17 +27,17 @@ const Train = () => {
       <h2>Treino</h2>
 
       <Border>
-        {trainings.map((training) => (
-          <>
+        <AnimatePresence mode="popLayout">
+          {trainings.map((training) => (
             <Rectangle
+              key={training.id}
               handleClickNext={() => navigate(`/exercise/${training.name}`)}
               handleClickDelet={() => removeTraining(training.id)}
-              key={training.id}
             >
               {training.name}
             </Rectangle>
-          </>
-        ))}
+          ))}
+        </AnimatePresence>
       </Border>
       <Button onClick={() => setIsModalOpen(true)}>Criar Treino</Button>
     </Container>

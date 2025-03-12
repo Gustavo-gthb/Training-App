@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   text,
-  trainingName,
+  trainingName, 
 }) => {
   const { inputValueExercise, handleChange, clearInput } = useCreateExercise();
   const { addExercise } = useAddExercise();

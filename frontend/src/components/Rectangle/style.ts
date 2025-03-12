@@ -27,6 +27,11 @@ export const DeleteButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #F90101;
+  border: none;
+  background-color: #DDA14D;
 
   margin-right: 15px;
+
+  font-size: 20px;
 `;

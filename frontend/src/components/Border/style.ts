@@ -18,5 +18,5 @@ export const Container = styled.div`
 
   gap: 20px;
 
-  transform: translateY(100px);
+  transform: translateY(100px); 
 `;

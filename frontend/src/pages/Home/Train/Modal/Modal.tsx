@@ -18,13 +18,13 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
-  const { inputValueTraining, handleChange } = useCreateTraining();
+  const { inputValueTraining, handleChange, clearInput } = useCreateTraining();
   const { addTraining } = useAddTraining();
 
   const handleAddTraining = () => {
     if (inputValueTraining.trim()) {
       addTraining(inputValueTraining);
-      
+      clearInput();
     }
   };
 
@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, text }) => {
         <AddButton onClick={handleAddTraining}>adicionar</AddButton>
         <DoneButton onClick={onClose}>concluido</DoneButton>
       </ModalContainer>
-    </Overlay> 
+    </Overlay>
   );
 };
 
