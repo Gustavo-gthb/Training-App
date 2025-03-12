@@ -13,6 +13,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import { useParams } from "react-router";
 import Border from "../../../components/Border";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Series = () => {
   const { exerciseName } = useParams();
@@ -38,23 +39,30 @@ const Series = () => {
       <h2>Séries de {exerciseName}</h2>
 
       <Border>
-        {series.reps.map((reps, index) => (
-          <>
-            <SeriesContainer key={index}>
-              <DeleteContainer
-                isSelected={selectedIndex === index}
-                onClick={() => handleSelected(index)}
-              >
-                <RepsContainer>
-                  Repetições: <InputSeries>{reps}</InputSeries>
-                </RepsContainer>
-                <WeightContainer>
-                  Peso: <InputSeries>{series.weight[index]}</InputSeries>
-                </WeightContainer>
-              </DeleteContainer>
-            </SeriesContainer>
-          </>
-        ))}
+        <AnimatePresence mode="popLayout">
+          {series.reps.map((reps, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.5 } }}
+            >
+              <SeriesContainer key={index}>
+                <DeleteContainer
+                  isSelected={selectedIndex === index}
+                  onClick={() => handleSelected(index)}
+                >
+                  <RepsContainer>
+                    Repetições: <InputSeries>{reps}</InputSeries>
+                  </RepsContainer>
+                  <WeightContainer>
+                    Peso: <InputSeries>{series.weight[index]}</InputSeries>
+                  </WeightContainer>
+                </DeleteContainer>
+              </SeriesContainer>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </Border>
 
       <DeleteButton

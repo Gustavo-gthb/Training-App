@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import { useNavigate, useParams } from "react-router";
 import useAddExercise from "../../../context/AddExercise/useAddExercise";
 import Border from "../../../components/Border";
+import { AnimatePresence } from "framer-motion";
 
 const Exercise = () => {
   const { trainingName } = useParams();
@@ -27,8 +28,8 @@ const Exercise = () => {
       <h2>Exercicios de {trainingName}</h2>
 
       <Border>
-        {currentExercises.map((exercise) => (
-          <>
+        <AnimatePresence mode="popLayout">
+          {currentExercises.map((exercise) => (
             <Rectangle
               handleClickNext={() => navigate(`/series/${exercise.name}`)}
               handleClickDelet={() =>
@@ -38,14 +39,8 @@ const Exercise = () => {
             >
               {exercise.name}
             </Rectangle>
-
-            {/* <Button
-              onClick={() => removeExercise(trainingName ?? "", exercise.id)}
-              >
-              aaaa
-              </Button> */}
-          </>
-        ))}
+          ))}
+        </AnimatePresence>
       </Border>
       <Button onClick={() => setIsModalOpen(true)}>Adicionar Exercicio</Button>
     </Container>

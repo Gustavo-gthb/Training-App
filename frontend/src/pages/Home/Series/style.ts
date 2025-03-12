@@ -41,7 +41,7 @@ export const DeleteContainer = styled.div<{ isSelected?: boolean }>`
   justify-content: center;
 
   border: ${({ isSelected }) => (isSelected ? "2px solid #0325D0" : "none")};
-  transition: border 1s ease-in-out;
+  transition: border 0.5s ease-in-out;
   width: 278px;
   height: 70px;
   border-radius: 8px;
