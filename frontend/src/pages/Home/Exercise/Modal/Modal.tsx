@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({
           <Input value={inputValueExercise} onChange={handleChange} />
         </ModalContent>
         <AddButton onClick={handleAddExercise}>adicionar</AddButton>
-        <DoneButton onClick={onClose}>concluido</DoneButton>
+        <DoneButton onClick={onClose}>concluído</DoneButton>
       </ModalContainer>
     </Overlay>
   );
